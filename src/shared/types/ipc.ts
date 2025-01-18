@@ -1,4 +1,4 @@
-export interface Customer {
+export interface Costumer {
   _id: string;
   _rev?: string;
   name: string;
@@ -9,7 +9,7 @@ export interface Customer {
   phone?: string;
 }
 
-export interface NewCustomer{
+export interface NewCostumer{
   name: string;
   address?: string;
   email: string;

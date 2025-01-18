@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { ElectronAPI, electronAPI } from '@electron-toolkit/preload'
-import { Customer, NewCustomer } from '../shared/types/ipcs'
+import { Costumer, NewCostumer } from '../shared/types/ipc'
 
 declare global {
   export interface Window{
@@ -11,22 +11,22 @@ declare global {
 
 // Custom APIs for renderer
 const api = {
-  onNewCustomer: (callback: () => void) => {
-    ipcRenderer.on('new-customer', callback)
+  onNewCostumer: (callback: () => void) => {
+    ipcRenderer.on('new-costumer', callback)
 
     return () => {
-      ipcRenderer.off('new-customer', callback)
+      ipcRenderer.off('new-costumer', callback)
     }
   },
   fetchUsers: () => {
     // INVOKE -> enviar e receber
     return ipcRenderer.invoke('fetch-users')
   },
-  addCustomer: (doc: NewCustomer): Promise<void | PouchDB.Core.Response> => ipcRenderer.invoke('add-customer', doc),
-  fetchAllCustomers: (): Promise<Customer[]> => ipcRenderer.invoke('fetch-all-customers'),
-  fetchCustomerById: (docId: string): Promise<Customer> => ipcRenderer.invoke('fetch-customer-id', docId),
-  deleteCustomer: (docId: string) => ipcRenderer.invoke('delete-customer', docId)
-
+  addCostumer: (doc: NewCostumer): Promise<void | PouchDB.Core.Response> => ipcRenderer.invoke('add-costumer', doc),
+  fetchAllCostumers: (): Promise<Costumer[]> => ipcRenderer.invoke('fetch-all-costumers'),
+  fetchCostumerById: (docId: string): Promise<Costumer> => ipcRenderer.invoke('fetch-costumer-id', docId),
+  deleteCostumer: (docId: string) => ipcRenderer.invoke('delete-costumer', docId),
+  getVersionApp: () => ipcRenderer.invoke('get-version')
 
 }
 

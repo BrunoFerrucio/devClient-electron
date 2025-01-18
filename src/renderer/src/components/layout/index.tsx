@@ -15,7 +15,7 @@ export function Layout(){
       navigate('/create')
     }
 
-     const unsub = window.api.onNewCustomer(handleNavigate)
+     const unsub = window.api.onNewCostumer(handleNavigate)
 
      return () => {
       unsub();
