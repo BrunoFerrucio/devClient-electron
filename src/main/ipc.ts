@@ -11,8 +11,6 @@ ipcMain.handle('fetch-users', () => {
   ]
 })
 
-
-
 ipcMain.handle('get-version', () => {
   return app.getVersion();
 })
