@@ -1,6 +1,5 @@
 import { BrowserWindow, app, globalShortcut } from 'electron';
 
-
 export function createShortcuts(window: BrowserWindow){
 
   app.on('browser-window-focus', () => {
